@@ -12,37 +12,10 @@ The main cookbook to in this repository is 'my-iis-webserver'.
 | `my-iis-webserver::destroy` | The `destroy` recipe will destroy the azure resources created in the `provision` recipe. |
 
 
-## Microsoft Azure Management Certificate installation
-To retrieve the .PFX file required, follow the steps in this great blog post from Stuart Preston (kudos to Stuart Preston for all his help):
-
-http://stuartpreston.net/2015/02/retrieving-microsoft-azure-management-certificates-for-use-in-cross-platform-automationprovisioning-tools/
-
-The resulting .pfx file needs to be placed in the following locations:
-
-Mac:
+## Pre-requisites
+Ensure the Azure CLI is installed on your workstation and an account has been added to it.
 ```
-~/.azure/mgmtcert.pfx
-```
-Windows
-```
-%USERPROFILE%\.azure\mgmtcert.pfx
-```
-
-##Microsoft Azure configuration file
-
-Azure configuration for Chef Provisioning is expected to be found in a file called ~/.azure/config or %USERPROFILE%\\.azure\config depending on your platform.  The file should look something like the following (note: the subscription id can be found within the downloaded .publishsettings file against your subscription name):
-
-Mac:
-```
-[default]
-management_certificate = "/users/USERNAME/.azure/mgmtcert.pfx"
-subscription_id = "43e53945-f02b-1234-5678-ad7dd14ac6f2"
-```
-Windows:
-```
-[default]
-management_certificate = "c:\users\USERNAME\mgmtcert.pfx"
-subscription_id = "43e53945-f02b-1234-5678-ad7dd14ac6f2"
+azure account login <path to publishsettings file>
 ```
 
 ##  Install the Azure provisioning Gems.
